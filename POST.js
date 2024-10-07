@@ -21,7 +21,7 @@ function validateApiContract(responseData) {
 async function testOauthToken() {
   const url = 'https://api-homologacao.getnet.com.br/auth/oauth/v2/token';
   
-  // Credenciais fornecidas
+  // Credenciais fornecidas (para testar o retorno 401, retirar ou suprimir parcialmente as credenciais)
   const clientId = '67823c6d-58de-494f-96d9-86a4c22682cb';
   const clientSecret = 'c2d6a06f-5f31-448b-9079-7e170e8536e4';
   
@@ -31,10 +31,10 @@ async function testOauthToken() {
     'Content-Type': 'application/x-www-form-urlencoded'
   };
   
-  // Dados da requisição
+  // Dados da requisição (para testar a requisição inválida, alterar o 'grant_type' parar simular uma bad request, código 400)
   const data = qs.stringify({
     'scope': 'oob',
-    'grant_type': 'invalid_type'
+    'grant_type': 'client_credentials'
   });
 
   try {
